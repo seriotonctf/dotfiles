@@ -51,8 +51,12 @@ configuration {
 	run-shell-command: "{terminal} -e {cmd}";
 
 	/*---------- Fallback Icon ----------*/
-	run,drun {
-		fallback-icon: "application-x-addon";
+	run {
+	    fallback-icon: "application-x-addon";
+	}
+
+	drun {
+	    fallback-icon: "application-x-addon";
 	}
 
 	/*---------- Window switcher settings ----------*/

@@ -28,7 +28,7 @@ fc-cache -fv
 # Installing alacritty
 echo -e '\e[38;5;75m[+] Installing Alacritty...\e[0m'
 
-sudo apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 -y
+sudo apt install cmake g++ pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3 -y
 git clone https://github.com/alacritty/alacritty.git
 cd alacritty
 cargo build --release
@@ -38,15 +38,6 @@ sudo desktop-file-install extra/linux/Alacritty.desktop
 sudo update-desktop-database
 
 cd ../
-
-# Installing i3
-echo -e '\e[38;5;75m[+] Installing i3...\e[0m'
-
-curl https://baltocdn.com/i3-window-manager/signing.asc | sudo apt-key add -
-sudo apt install apt-transport-https --yes
-echo "deb https://baltocdn.com/i3-window-manager/i3/i3-autobuild/ all main" | sudo tee /etc/apt/sources.list.d/i3-autobuild.list
-sudo apt update
-sudo apt install i3 i3blocks i3status i3-wm -y
 
 # Copying configs
 echo -e '\e[38;5;75m[+] Copying configs...\e[0m'
@@ -60,7 +51,7 @@ mkdir -p ~/.config/picom
 cp .config/picom/picom.conf ~/.config/picom/picom.conf
 
 cp -r .config/rofi ~/.config/
-~/.config/rofi/launchers/type-1/launcher.sh
+chmod +x ~/.config/rofi/launchers/type-1/launcher.sh
 
 mkdir -p ~/.config/alacritty
 cp .config/alacritty/*.toml ~/.config/alacritty/
